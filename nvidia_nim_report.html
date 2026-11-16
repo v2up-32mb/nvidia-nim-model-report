@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NVIDIA NIM 免费模型详细介绍报告</title>
+<style>
+body{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;max-width:900px;margin:0 auto;padding:24px;color:#1a1a2e;background:#fafafa;line-height:1.6}
+h1{font-size:1.6em;border-bottom:2px solid #76b900;padding-bottom:8px}
+h2{font-size:1.2em;margin-top:20px}
+.meta{background:#fff;border:1px solid #ddd;border-radius:8px;padding:14px;margin:16px 0}
+.meta p{margin:4px 0}
+details.model{background:#fff;border:1px solid #ccc;border-left:4px solid #76b900;border-radius:8px;margin:16px 0;overflow:hidden}
+details.model>summary{cursor:pointer;font-weight:700;font-size:1.1em;padding:16px 18px;background:#f4f8ec;list-style:none;user-select:none}
+details.model>summary::-webkit-details-marker{display:none}
+details.model>summary:before{content:"▶ ";color:#76b900}
+details.model[open]>summary:before{content:"▼ ";color:#76b900}
+details.model>.body{padding:18px}
+section{margin:14px 0}
+section h3{font-size:1em;color:#76b900;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+table{border-collapse:collapse;width:100%;font-size:.9em;margin:8px 0}
+th,td{border:1px solid #e0e0e0;padding:6px 10px;text-align:left}
+th{background:#f7f7f7}
+tr.hl td{background:#f4f8ec;font-weight:600}
+.bench{margin:10px 0;padding:10px;background:#fafafa;border-radius:6px}
+.bench-name{font-weight:600}
+.bench-score .ours{font-size:1.3em;font-weight:700;color:#76b900;margin-right:10px}
+.bench-score .note{font-size:.85em;color:#666}
+details{margin:6px 0;font-size:.9em}
+details>summary{cursor:pointer;font-weight:600;color:#333}
+.sources{font-size:.8em;color:#555;margin-top:18px;border-top:1px solid #eee;padding-top:12px}
+.sources a{color:#2563eb;text-decoration:none}
+.badge{display:inline-block;background:#76b900;color:#fff;border-radius:4px;padding:1px 8px;font-size:.75em;margin-left:8px}
+.tag{display:inline-block;background:#e8f0d0;color:#3a5f00;border-radius:4px;padding:1px 7px;font-size:.75em;margin:0 3px 3px 0}
+.cost{color:#0a7a2b;font-weight:700}
+</style></head>
+<body>
+<h1>NVIDIA NIM 免费模型详细介绍报告<span class="badge">oc-proxy /models 接口</span></h1>
+<div class="meta">
+<p><strong>数据源:</strong>本机 oc-proxy <code>/v1/models</code> 接口(86 个模型中 NVIDIA NIM 免费模型)。</p>
+<p><strong>筛选:</strong>family/canonical 含 <code>nvidia</code> 的模型,共 <strong>2 个</strong>。</p>
+<p><strong>性能数据:</strong>以 NVIDIA 官方 HuggingFace 模型卡(Model Card)为准,逐条标注来源。/models 接口本身不含 benchmark 数字,故性能部分交叉引用官方卡片。</p>
+<p><strong>生成:</strong>2026-11-16。每个模型说明默认折叠,点击展开。</p>
+</div>
+
+<!-- ===== LIGHTNING ===== -->
+<details class="model">
+<summary>Nemotron 3.5 Lightning Free <code style="font-weight:400;color:#666">nemotron-3.5-lightning-free</code></summary>
+<div class="body">
+<p>Fast NVIDIA Nemotron MoE for reliable agentic tasks across enterprise workloads</p>
+<p><span class="tag">MoE</span><span class="tag">3B active</span><span class="tag">1M ctx</span><span class="tag">Mamba-2 hybrid</span><span class="tag">Tool calling</span><span class="tag">Structured output</span><span class="tag">Multilingual</span></p>
+
+<section><h3>基本参数(来自 /models 接口)</h3>
+<table><tbody>
+<tr><td>名称</td><td>Nemotron 3.5 Lightning Free</td></tr>
+<tr><td>接口 ID</td><td><code>nemotron-3.5-lightning-free</code></td></tr>
+<tr><td>Canonical ID</td><td><code>nvidia/nemotron-3.5-lightning</code></td></tr>
+<tr><td>模型族</td><td>nemotron</td></tr>
+<tr><td>开放权重</td><td>是 (open_weights=true)</td></tr>
+<tr><td>知识截止日期</td><td>2025-09</td></tr>
+<tr><td>发布日期</td><td>2026-08-11</td></tr>
+<tr><td>输入模态</td><td>text</td></tr>
+<tr><td>输出模态</td><td>text</td></tr>
+<tr><td>上下文上限</td><td>262,144 tokens</td></tr>
+<tr><td>输出上限</td><td>262,144 tokens</td></tr>
+<tr><td>成本(输入/输出)</td><td class="cost">$0 / $0(免费)</td></tr>
+<tr><td>工具调用</td><td>支持</td></tr>
+<tr><td>推理控制</td><td>支持</td></tr>
+<tr><td>结构化输出</td><td>支持</td></tr>
+<tr><td>采样参数</td><td>temperature / top_p / top_k 均支持</td></tr>
+</tbody></table></section>
+
+<section><h3>架构与规格(来自 NVIDIA 官方模型卡)</h3>
+<table><tbody>
+<tr><td>架构</td><td>MoE — Mamba-2 + MoE + Attention hybrid</td></tr>
+<tr><td>参数量</td><td>30B total / 3B active (MoE)</td></tr>
+<tr><td>最大上下文</td><td>Up to 1M tokens (256K validated on single H100; /models exposes 256K limit)</td></tr>
+<tr><td>精度</td><td>BF16 (full-precision) / NVFP4 (quantized)</td></tr>
+<tr><td>语言</td><td>English (and coding languages), Spanish, French, German, Italian, Japanese</td></tr>
+<tr><td>支持硬件</td><td>NVIDIA Blackwell (GB200, B200), Hopper (H100, H200), Ampere (A100)</td></tr>
+</tbody></table></section>
+
+<section><h3>性能基准(来自 NVIDIA 官方模型卡)</h3>
+<div class="bench">
+<div class="bench-name">MMLU Pro</div>
+<div class="bench-score"><span class="ours">81.94</span><span class="note">General knowledge; lower than larger Qwen/Gemma peers of similar active-param class</span></div>
+<details><summary>Compare with peers (from NVIDIA model card)</summary>
+<table><thead><tr><th>Model</th><th>Score</th></tr></thead><tbody>
+<tr class="hl"><td>Nemotron 3.5 Lightning Free</td><td>81.94</td></tr>
+<tr><td>Qwen 3.6 35B A3B</td><td>85.63</td></tr><tr><td>Gemma 4 26B A4B</td><td>85.20</td></tr><tr><td>Nemotron 3 Nano</td><td>78.46</td></tr><tr><td>Nemotron 3 Super</td><td>83.89</td></tr><tr><td>GPT-OSS 20B</td><td>76.40</td></tr></tbody></table></details></div><div class="bench">
+<div class="bench-name">GPQA Diamond (no tools)</div>
+<div class="bench-score"><span class="ours">75.44</span><span class="note">PhD-level science reasoning; competitive in its active-param class</span></div>
+<details><summary>Compare with peers (from NVIDIA model card)</summary>
+<table><thead><tr><th>Model</th><th>Score</th></tr></thead><tbody>
+<tr class="hl"><td>Nemotron 3.5 Lightning Free</td><td>75.44</td></tr>
+<tr><td>Qwen 3.6 35B A3B</td><td>83.40</td></tr><tr><td>Gemma 4 26B A4B</td><td>79.61</td></tr><tr><td>Nemotron 3 Nano</td><td>74.05</td></tr><tr><td>GPT-OSS 20B</td><td>71.46</td></tr></tbody></table></details></div><div class="bench">
+<div class="bench-name">HLE (text-only, no tools)</div>
+<div class="bench-score"><span class="ours">11.72</span><span class="note">Humanity's Last Exam text-only; below peers, reflects smaller active param count</span></div>
+<details><summary>Compare with peers (from NVIDIA model card)</summary>
+<table><thead><tr><th>Model</th><th>Score</th></tr></thead><tbody>
+<tr class="hl"><td>Nemotron 3.5 Lightning Free</td><td>11.72</td></tr>
+<tr><td>Qwen 3.6 35B A3B</td><td>19.56</td></tr><tr><td>Gemma 4 26B A4B</td><td>17.42</td></tr><tr><td>Nemotron 3 Nano</td><td>10.89</td></tr><tr><td>GPT-OSS 20B</td><td>13.76</td></tr></tbody></table></details></div><div class="bench">
+<div class="bench-name">SciCode</div>
+<div class="bench-score"><span class="ours">32.60</span><span class="note">Scientific coding</span></div>
+<details><summary>Compare with peers (from NVIDIA model card)</summary>
+<table><thead><tr><th>Model</th><th>Score</th></tr></thead><tbody>
+<tr class="hl"><td>Nemotron 3.5 Lightning Free</td><td>32.60</td></tr>
+<tr><td>Qwen 3.6 35B A3B</td><td>35.33</td></tr><tr><td>Gemma 4 26B A4B</td><td>40.28</td></tr><tr><td>Nemotron 3 Nano</td><td>30.08</td></tr><tr><td>GPT-OSS 20B</td><td>38.63</td></tr></tbody></table></details></div><div class="bench">
+<div class="bench-name">AA-Omniscience</div>
+<div class="bench-score"><span class="ours">17.50</span><span class="note">Anti-AI-eval knowledge benchmark</span></div>
+<details><summary>Compare with peers (from NVIDIA model card)</summary>
+<table><thead><tr><th>Model</th><th>Score</th></tr></thead><tbody>
+<tr class="hl"><td>Nemotron 3.5 Lightning Free</td><td>17.50</td></tr>
+<tr><td>Qwen 3.6 35B A3B</td><td>19.47</td></tr><tr><td>Gemma 4 26B A4B</td><td>22.17</td></tr><tr><td>Nemotron 3 Nano</td><td>20.15</td></tr><tr><td>GPT-OSS 20B</td><td>16.62</td></tr></tbody></table></details></div></section>
+
+<section><h3>部署配置</h3><ol><li>1x H100 80GB (or A100 80GB): vLLM or SGLang, BF16, 256K context (memory-bound), no speculative decoding</li><li>8x H100 (TP8 + expert parallel): vLLM, BF16, 1M context (--max-model-len 1048576)</li><li>1x GB200: vLLM + DSpark speculative decoding (num_speculative_tokens 5), 1M context</li><li>1x B200: SGLang balanced, BF16, 1M context (--context-length 1048576); MTP/DSpark optional</li></ol></section>
+
+<section><h3>训练数据规模</h3>
+<table><thead><tr><th>数据集</th><th>Token 量</th><th>说明</th></tr></thead><tbody>
+<tr><td>Nemotron-CC-v2 & v2.1</td><td>9.1T</td><td>Massive English web data filtered from Common Crawl, including 2.5T+ tokens of new organic, translated, and synthetically rephrased content</td></tr><tr><td>Nemotron-CC-Code-v1</td><td>427.9B</td><td>High-quality code tokens extracted from Common Crawl using Lynx + LLM pipeline to preserve structure and equations</td></tr><tr><td>Nemotron-Pretraining-Code-v1/v2/v3</td><td>1.7T</td><td>Curated GitHub code references with multi-stage filtering, deduplication, and large-scale synthetic code data</td></tr><tr><td>Nemotron-CC-Math-v1</td><td>133.3B</td><td>High-quality math pre-training dataset preserving LaTeX formatting and mathematical structures</td></tr><tr><td>Nemotron-Pretraining-Specialized/SFT v1/v1.1/v1.2/SFT-v1</td><td>660.0B</td><td>Synthetic datasets targeting specialized domains such as STEM reasoning and scientific coding</td></tr><tr><td>Nemotron-Pretraining-Legal-v1</td><td>4.3B</td><td>Synthetic datasets targeting the legal domain</td></tr>
+</tbody></table></section>
+
+<section><h3>适用场景</h3><ul><li>Fast agentic task execution on enterprise workloads (3B active params = low latency, low compute)</li><li>Long-context processing up to 1M tokens on multi-GPU (8x H100 or GB200)</li><li>Cost-efficient MoE inference on a single H100 or A100 for production chat/agent loops</li><li>Structured-output tool calling (JSON schema compliance via structured_output capability)</li><li>Multilingual tasks: English + coding languages + 5 European/Japanese languages</li></ul></section>
+</div></details>
+
+<!-- ===== SUPER-VL ===== -->
+<details class="model">
+<summary>Nemotron 3.5 Super VL Free <code style="font-weight:400;color:#666">nemotron-3.5-super-vl-free</code></summary>
+<div class="body">
+<p>NVIDIA vision-language reasoning model for text, image, and video understanding and agentic tool use</p>
+<p><span class="tag">MoE</span><span class="tag">12B active</span><span class="tag">多模态</span><span class="tag">1M ctx</span><span class="tag">视觉+视频</span><span class="tag">Tool calling</span><span class="tag">xhigh 推理档位</span></p>
+
+<section><h3>基本参数(来自 /models 接口)</h3>
+<table><tbody>
+<tr><td>名称</td><td>Nemotron 3.5 Super VL Free</td></tr>
+<tr><td>接口 ID</td><td><code>nemotron-3.5-super-vl-free</code></td></tr>
+<tr><td>Canonical ID</td><td><code>nvidia/nemotron-3.5-super-vl-120b-a12b</code></td></tr>
+<tr><td>模型族</td><td>nemotron</td></tr>
+<tr><td>开放权重</td><td>是 (open_weights=true)</td></tr>
+<tr><td>知识截止日期</td><td>未披露</td></tr>
+<tr><td>发布日期</td><td>2026-10-15</td></tr>
+<tr><td>输入模态</td><td>text, image/jpeg, image/png</td></tr>
+<tr><td>输出模态</td><td>text</td></tr>
+<tr><td>上下文上限</td><td>1,048,576 tokens</td></tr>
+<tr><td>输出上限</td><td>131,072 tokens</td></tr>
+<tr><td>成本(输入/输出)</td><td class="cost">$0 / $0(免费)</td></tr>
+<tr><td>工具调用</td><td>支持</td></tr>
+<tr><td>推理档位</td><td>none/minimal/low/medium/high/xhigh(6 档)</td></tr>
+<tr><td>采样参数</td><td>temperature / top_p / top_k 均支持</td></tr>
+</tbody></table></section>
+
+<section><h3>架构与规格(来自 NVIDIA 官方模型卡)</h3>
+<table><tbody>
+<tr><td>架构</td><td>MoE — Mamba-2 + MoE + Attention hybrid, 120B total / 12B active</td></tr>
+<tr><td>参数量</td><td>120B total / 12B active (MoE) <em>(repo 命名 120B-A12B)</em></td></tr>
+<tr><td>最大上下文</td><td>1M tokens (validated); /models exposes 1,048,576 context limit</td></tr>
+<tr><td>精度</td><td>BF16 / NVFP4</td></tr>
+<tr><td>模态</td><td>Text + image + video input; text output; supports visual QA, charts, tables, OCR, multi-page documents, visual grounding, video understanding</td></tr>
+<tr><td>硬件</td><td>4x H100 (TP4) or 2x GB200 (TP2); MTP with 5 draft tokens</td></tr>
+</tbody></table></section>
+
+<section><h3>性能基准(来自 NVIDIA 官方模型卡)</h3>
+<div class="bench">
+<div class="bench-name">GPQA-Diamond</div>
+<div class="bench-score"><span class="ours">89.52</span><span class="note">PhD-level science QA; strong, near top of the field at this param class</span></div>
+<details><summary>Compare with peers (from NVIDIA model card)</summary>
+<table><thead><tr><th>Model</th><th>Score</th></tr></thead><tbody>
+<tr class="hl"><td>Nemotron 3.5 Super VL Free</td><td>89.52</td></tr>
+<tr><td>Qwen3.5-122B-A10B</td><td>86.7</td></tr><tr><td>DeepSeek-V4-Flash</td><td>89.6</td></tr><tr><td>Nemotron 3 Ultra</td><td>87.0</td></tr><tr><td>GLM-5.3-Flash</td><td>91.2</td></tr></tbody></table></details></div><div class="bench">
+<div class="bench-name">HLE (text-only)</div>
+<div class="bench-score"><span class="ours">31.79</span><span class="note">Humanity's Last Exam; above peers except Qwen3.8-Flash-Next (39.6)</span></div>
+<details><summary>Compare with peers (from NVIDIA model card)</summary>
+<table><thead><tr><th>Model</th><th>Score</th></tr></thead><tbody>
+<tr class="hl"><td>Nemotron 3.5 Super VL Free</td><td>31.79</td></tr>
+<tr><td>Qwen3.5-122B</td><td>24.2</td></tr><tr><td>Qwen3.8-Flash-Next</td><td>39.6</td></tr><tr><td>DeepSeek-V4-Flash</td><td>35.8</td></tr><tr><td>Nemotron 3 Ultra</td><td>29.2</td></tr><tr><td>GLM-5.3-Flash</td><td>36.47</td></tr></tbody></table></details></div><div class="bench">
+<div class="bench-name">MMLU-ProX</div>
+<div class="bench-score"><span class="ours">76.91</span><span class="note">Multilingual MMLU-Pro; below 83-85 of most peers, reflects vision-focused training tradeoff</span></div>
+<details><summary>Compare with peers (from NVIDIA model card)</summary>
+<table><thead><tr><th>Model</th><th>Score</th></tr></thead><tbody>
+<tr class="hl"><td>Nemotron 3.5 Super VL Free</td><td>76.91</td></tr>
+<tr><td>Qwen3.5-122B</td><td>83.2</td></tr><tr><td>Qwen3.8-Flash-Next</td><td>83.0</td></tr><tr><td>DeepSeek-V4-Flash</td><td>85.5</td></tr><tr><td>Nemotron 3 Ultra</td><td>83.1</td></tr><tr><td>GLM-5.3-Flash</td><td>83.0</td></tr></tbody></table></details></div><div class="bench">
+<div class="bench-name">AA-Omniscience hallucination rate</div>
+<div class="bench-score"><span class="ours">30.0%</span><span class="note">Lower hallucination rate than most peers (GLM-5.3: 30.3%, Nemotron 3 Ultra: 22.1%)</span></div>
+<details><summary>Compare with peers (from NVIDIA model card)</summary>
+<table><thead><tr><th>Model</th><th>Score</th></tr></thead><tbody>
+<tr class="hl"><td>Nemotron 3.5 Super VL Free</td><td>30.0%</td></tr>
+<tr><td>Qwen3.5-122B</td><td>84.5%</td></tr><tr><td>Qwen3.8-Flash-Next</td><td>41.3%</td></tr><tr><td>DeepSeek-V4-Flash</td><td>95.9%</td></tr><tr><td>Nemotron 3 Ultra</td><td>22.1%</td></tr><tr><td>GLM-5.3-Flash</td><td>30.3%</td></tr></tbody></table></details></div></section>
+
+<section><h3>部署配置</h3><ol><li>4x H100: vLLM or SGLang, TP4, MTP with 5 draft tokens; text/image/video; BF16 or NVFP4</li><li>2x GB200: vLLM or SGLang, TP2, MTP with 5 draft tokens; text/image/video</li></ol></section>
+
+<section><h3>训练数据规模</h3>
+<table><thead><tr><th>数据集</th><th>规模</th><th>说明</th></tr></thead><tbody>
+<tr><td>Nemotron-CC-v2 & v2.1</td><td>9.1T</td><td>Massive English web data filtered from Common Crawl, including 2.5T+ new organic/translated/synthetic tokens</td></tr><tr><td>Nemotron-CC-Code-v1</td><td>427.9B</td><td>High-quality code tokens from Common Crawl via Lynx + LLM pipeline</td></tr><tr><td>Nemotron-Pretraining-Code v1-v3</td><td>1.7T</td><td>Curated GitHub code with multi-stage filtering, deduplication, synthetic code</td></tr><tr><td>Nemotron-CC-Math-v1</td><td>133.3B</td><td>High-quality math pre-training preserving LaTeX formatting</td></tr><tr><td>Sangraha (visual)</td><td>109.3M indexed source sequences</td><td>Multimodal data: visual QA, charts, tables, OCR, multi-page documents, visual grounding, video understanding</td></tr><tr><td>Software-engineering mid-training</td><td>67B</td><td>Whole repositories (20%), issue-PR pairs (41%), commit diffs (3%), build/CI logs (1%), agent traces (10%), pre-training replay (20%), long-context data (5%)</td></tr><tr><td>Long-context pre-training</td><td>35B + 9B</td><td>35B-token extension to 1M context, followed by 9B-token recovery stage</td></tr><tr><td>Indic continued pre-training</td><td>100B</td><td>10B Indic tokens + 90B from preceding blend</td></tr>
+</tbody></table></section>
+
+<section><h3>适用场景</h3><ul><li>Multimodal understanding: text + image + video (unique in the /models free list)</li><li>Visual reasoning: charts, tables, OCR, multi-page documents, visual grounding</li><li>Agentic tool use with vision (tools_supported=true, 6-level reasoning effort: none/minimal/low/medium/high/xhigh)</li><li>Long-context 1M token reasoning (validated on 4x H100 or 2x GB200)</li><li>Video understanding via Nemotron 3 Nano Omni training corpus</li><li>Low-hallucination factual tasks (AA-Omniscience hallucination rate 30%)</li></ul></section>
+</div></details>
+
+<div class="sources">
+<h3>信息来源(逐条)</h3>
+<ul>
+<li>模型基础字段(id/name/capabilities/limit/cost/modalities 等):本机 oc-proxy <code>/v1/models</code> 接口,共 86 个模型。</li>
+<li>架构、参数量、上下文、部署、训练数据、benchmark 对比:
+  <a href="https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16">Lightning Model Card</a>、
+  <a href="https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16">Super-VL Model Card</a>(NVIDIA 官方 HuggingFace)。</li>
+<li>Super-VL 参数量"120B/12B active"由 repo 命名 <code>NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16</code> 推断(NVIDIA MoE 命名惯例 A&lt;N&gt;B = N B active)。</li>
+<li>benchmark 对比模型名为 oc-proxy 列表中的官方评测对照,数值来自 NVIDIA 模型卡"Reasoning Benchmark Evaluations / Benchmarks"表格。</li>
+</ul>
+<p><em>注:GitHub 凭据已失效,无法发布到 Gist/Pages,故直接交付本 HTML。保存为 .html 双击打开即可,每个模型默认折叠。</em></p>
+</div>
+</body></html>
